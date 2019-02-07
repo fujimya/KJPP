@@ -12,41 +12,64 @@
     android:layout_marginRight="1dp"
     android:id="@+id/cv_main">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:background="#fff"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/row_padding_vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/row_padding_vertical"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/row_padding_vertical">
+        android:paddingBottom="@dimen/row_padding_vertical">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:text="Now create a class named MoviesAdapter.java "
             android:textColor="@color/title"
             android:textSize="16dp"
-            android:textStyle="bold"
-            android:text="Now create a class named MoviesAdapter.java "/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/title"
-            android:text="subtitel"/>
+            android:text="subtitel" />
 
         <TextView
-            android:text="DD-MM-YYYY"
-            android:layout_below="@id/title"
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/title"
             android:layout_alignParentRight="true"
+            android:text="DD-MM-YYYY"
             android:textColor="@color/year" />
+
+        <TextView
+            android:id="@+id/status_pengerjaan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date"
+            android:text="Status Pengerjaan :"
+            android:textColor="@color/button_delete"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_deal"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@id/date"
+            android:layout_alignEnd="@+id/title"
+            android:layout_marginTop="2dp"
+            android:background="@android:color/holo_orange_dark"
+            android:clickable="false"
+            android:focusable="false"
+            android:text="Menunggu"
+            android:textColor="@color/cardview_light_background" />
 
     </RelativeLayout>
 

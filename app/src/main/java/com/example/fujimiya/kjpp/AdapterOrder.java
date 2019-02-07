@@ -2,11 +2,13 @@ package com.example.fujimiya.kjpp;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -22,17 +24,20 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.ViewHolder> 
     private ArrayList<String> NamaPerusahaan;
     private ArrayList<String> TanggalPenawaran;
     private ArrayList<String> Status;
-
+    private ArrayList<String> Status_Pengerjaan;
+    private ArrayList<String> Status_Order= new ArrayList<String>();
     Context context;
 
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
-    public AdapterOrder(Context contxt, ArrayList<String> NoOrderget, ArrayList<String> NamaPerusahaanGet, ArrayList<String> TanggalGet,ArrayList<String> StatusGet){
+    public AdapterOrder(Context contxt, ArrayList<String> NoOrderget, ArrayList<String> NamaPerusahaanGet, ArrayList<String> TanggalGet,ArrayList<String> StatusGet,ArrayList<String> StatusPengerjaanGet,ArrayList<String> StatusOrderGet){
         NoOrder =  NoOrderget;
         NamaPerusahaan =  NamaPerusahaanGet;
         TanggalPenawaran = TanggalGet;
         Status = StatusGet;
+        Status_Pengerjaan = StatusPengerjaanGet;
+        Status_Order= StatusOrderGet;
         context = contxt;
     }
 
@@ -50,9 +55,18 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.ViewHolder> 
 
     @Override
     public void onBindViewHolder(AdapterOrder.ViewHolder holder, int position) {
-        holder.txt_NoOrder.setText(NoOrder.get(position));
+        holder.txt_NoOrder.setText("No. Order : " + NoOrder.get(position));
         holder.txt_NamaPerusahaan.setText(NamaPerusahaan.get(position));
         holder.txt_TanggalOrder.setText(TanggalPenawaran.get(position));
+        holder.txt_StatusPengerjaan.setText(Status_Pengerjaan.get(position));
+        holder.txt_Status_order.setText(Status_Order.get(position));
+        if(Status_Order.get(position).equals("MENUNGGU")){
+            holder.txt_Status_order.setBackgroundColor(Color.parseColor("#ffff8800"));
+        }else if (Status_Order.get(position).equals("DEAL")){
+            holder.txt_Status_order.setBackgroundColor(Color.parseColor("#FF99cc00"));
+        }else{
+            holder.txt_Status_order.setBackgroundColor(Color.parseColor("#FFF72E1A"));
+        }
     }
 
     @Override
@@ -64,12 +78,16 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.ViewHolder> 
         public TextView txt_NamaPerusahaan;
         public TextView txt_NoOrder;
         public TextView txt_TanggalOrder;
+        public TextView txt_StatusPengerjaan;
+        public Button txt_Status_order;
         public CardView cvMain;
         public ViewHolder(View v) {
             super(v);
             txt_NamaPerusahaan = (TextView) v.findViewById(R.id.title);
             txt_NoOrder = (TextView) v.findViewById(R.id.subtitle);
             txt_TanggalOrder = (TextView) v.findViewById(R.id.date);
+            txt_StatusPengerjaan= (TextView) v.findViewById(R.id.status_pengerjaan);
+            txt_Status_order= (Button) v.findViewById(R.id.btn_deal);
             cvMain = (CardView) v.findViewById(R.id.cv_main);
             cvMain.setOnClickListener(new View.OnClickListener() {
                 @Override
