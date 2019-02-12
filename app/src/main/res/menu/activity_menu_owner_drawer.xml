@@ -7,17 +7,21 @@
 
         <item
             android:id="@+id/penawaran"
-            android:icon="@drawable/ic_format_list"
+            android:icon="@drawable/orderbaru"
             android:title="DATA ORDER" />
         <item
+            android:id="@+id/pembayaran"
+            android:icon="@drawable/fund"
+            android:title="DATA PEMBAYARAN" />
+        <item
             android:id="@+id/laporan"
-            android:icon="@drawable/ic_format_list"
+            android:icon="@drawable/report"
             android:title="LAPORAN" />
 
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_assignment_return"
-            android:title="Keluar" />
+            android:icon="@drawable/keluar"
+            android:title="KELUAR" />
     </group>
 
 </menu>

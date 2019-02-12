@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         level = sharedpreferences.getString(TAG_LEVEL, null);
         nama_user= sharedpreferences.getString(TAG_NAMA, null);
 
-        if (session) {
+      if (session) {
             Intent intent = new Intent(LoginActivity.this, MenuOwner.class);
             intent.putExtra(TAG_ID, id);
             intent.putExtra(TAG_USERNAME, username);
@@ -110,7 +110,6 @@ public class LoginActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 String username = txt_username.getText().toString();
                 String password = txt_password.getText().toString();
-
                 // mengecek kolom yang kosong
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
                     if (conMgr.getActiveNetworkInfo() != null
@@ -165,11 +164,11 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString(TAG_USERNAME, username);
                         editor.putString(TAG_NAMA, nama);
                         editor.putString(TAG_LEVEL, level);
-                        editor.commit();
+                       editor.commit();
 
                         // Memanggil main activity
                         Intent intent = new Intent(LoginActivity.this, MenuOwner.class);
-                          intent.putExtra(TAG_ID, id);
+                        intent.putExtra(TAG_ID, id);
                         intent.putExtra(TAG_USERNAME, username);
                         intent.putExtra(TAG_NAMA, nama);
                         intent.putExtra(TAG_LEVEL, level);

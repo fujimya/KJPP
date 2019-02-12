@@ -1,5 +1,6 @@
 package com.example.fujimiya.kjpp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,15 +10,17 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class MenuOwner extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    SharedPreferences sharedpreferences;
-    String id, username,nama,level;
-    TextView nama_user,hak_akses;
+            SharedPreferences sharedpreferences;
+            String id, username,nama,level;
+            TextView nama_user,hak_akses;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class MenuOwner extends AppCompatActivity
         level = getIntent().getStringExtra("hak_akses");
         nama_user = (TextView) findViewById(R.id.textView3);
         hak_akses = (TextView) findViewById(R.id.textView4);
+        CardView cardorderx = (CardView) findViewById(R.id.cardorder);
         nama_user.setText("SELAMAT DATANG "+ nama);
         hak_akses.setText("Anda Login Sebagai : "+level);
         nama_user.setAllCaps(true);
@@ -42,6 +46,15 @@ public class MenuOwner extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        cardorderx.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                startActivity(new Intent(MenuOwner.this, OrderOwner.class));
+            }
+        });
     }
 
     @Override
@@ -85,7 +98,7 @@ public class MenuOwner extends AppCompatActivity
         if (id == R.id.nav_logout) {
          logout();
         } else if (id == R.id.penawaran) {
-            startActivity(new Intent(getApplicationContext(), OrderOwner.class));
+        startActivity(new Intent(MenuOwner.this, OrderOwner.class));
 
         }else if (id == R.id.laporan) {
 
@@ -106,4 +119,8 @@ public class MenuOwner extends AppCompatActivity
         finish();
         startActivity(intent);
     }
+/*    public static Intent getActIntent(Activity activity) {
+        // kode untuk pengambilan Intent
+        return new Intent(activity, MenuOwner.class);
+    }*/
 }

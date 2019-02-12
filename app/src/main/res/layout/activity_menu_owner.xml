@@ -20,6 +20,8 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_menu_owner"
-        app:menu="@menu/activity_menu_owner_drawer" />
+        app:menu="@menu/activity_menu_owner_drawer"
+        app:itemIconTint="@android:color/black"
+      />
 
 </android.support.v4.widget.DrawerLayout>
